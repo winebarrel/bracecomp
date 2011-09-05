@@ -1,0 +1,22 @@
+= bracecomp
+
+Copyright (c) 201q SUGAWARA Genki <sgwr_dts@yahoo.co.jp>
+
+== Description
+
+Brace expansion library.
+
+== Install
+
+gem install bracecomp
+
+== Example
+
+  require 'bracecomp'
+  
+  p 'server-{a,b}-{07..10}'.expand
+  #=> ["server-a-07", "server-a-08", "server-a-09", "server-a-10", "server-b-07", "server-b-08", "server-b-09", "server-b-10"]
+  
+  p 'zone-{a..c}'.expand
+  #=> ["zone-a", "zone-b", "zone-c"]
+
