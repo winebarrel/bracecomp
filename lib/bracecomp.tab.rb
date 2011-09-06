@@ -13,7 +13,7 @@ require 'strscan'
 
 class BraceComp < Racc::Parser
 
-module_eval <<'..end bracecomp.y modeval..idad4372d656', 'bracecomp.y', 50
+module_eval <<'..end bracecomp.y modeval..idf2d157fb92', 'bracecomp.y', 50
 
 attr_reader :tree
 
@@ -54,6 +54,7 @@ end
 
 def permutation(stack, ary = [], &block)
   list = stack.shift
+  return unless list
 
   list.each do |i|
     if stack.empty?
@@ -128,13 +129,17 @@ def expand
 
   expandeds = []
 
-  permutation(sets) do |seq|
-    expandeds << src % seq
+  if sets.empty?
+    expandeds << src
+  else
+    permutation(sets) do |seq|
+      expandeds << src % seq
+    end
   end
 
   expandeds
 end
-..end bracecomp.y modeval..idad4372d656
+..end bracecomp.y modeval..idf2d157fb92
 
 ##### racc 1.4.5 generates ###
 

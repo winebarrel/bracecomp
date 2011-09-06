@@ -87,6 +87,7 @@ end
 
 def permutation(stack, ary = [], &block)
   list = stack.shift
+  return unless list
 
   list.each do |i|
     if stack.empty?
@@ -161,8 +162,12 @@ def expand
 
   expandeds = []
 
-  permutation(sets) do |seq|
-    expandeds << src % seq
+  if sets.empty?
+    expandeds << src
+  else
+    permutation(sets) do |seq|
+      expandeds << src % seq
+    end
   end
 
   expandeds
