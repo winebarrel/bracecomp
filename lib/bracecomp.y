@@ -63,15 +63,15 @@ def scan
     if (piece = @s.scan /\A\s+/)
       # nothing to do
     elsif (piece = @s.scan /\A[^{},]+/)
-      yield :WORD, piece
+      yield [:WORD, piece]
     elsif (piece = @s.scan /\A[{},]/)
-      yield piece, piece
+      yield [piece, piece]
     else
       raise Racc::ParseError, 'parse error'
     end
   end
 
-  yield false, '$'
+  yield [false, '$']
 end
 private :scan
 
